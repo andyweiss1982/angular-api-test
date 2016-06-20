@@ -1,1 +1,6 @@
-System.registerDynamic("app/environment.js",[],!0,function(a,b,c){"use strict";return b.environment={production:!0},c.exports}),System.registerDynamic("app/frontend.component.js",["@angular/core"],!0,function(a,b,c){"use strict";var d=this&&this.__decorate||function(a,b,c,d){var e,f=arguments.length,g=f<3?b:null===d?d=Object.getOwnPropertyDescriptor(b,c):d;if("object"==typeof Reflect&&"function"==typeof Reflect.decorate)g=Reflect.decorate(a,b,c,d);else for(var h=a.length-1;h>=0;h--)(e=a[h])&&(g=(f<3?e(g):f>3?e(b,c,g):e(b,c))||g);return f>3&&g&&Object.defineProperty(b,c,g),g},e=this&&this.__metadata||function(a,b){if("object"==typeof Reflect&&"function"==typeof Reflect.metadata)return Reflect.metadata(a,b)},f=a("@angular/core"),g=function(){function a(){this.title="frontend works!"}return a=d([f.Component({moduleId:c.id,selector:"frontend-app",templateUrl:"frontend.component.html",styleUrls:["frontend.component.css"]}),e("design:paramtypes",[])],a)}();return b.FrontendAppComponent=g,c.exports}),System.registerDynamic("app/index.js",["./environment","./frontend.component"],!0,function(a,b,c){"use strict";var d=a("./environment");b.environment=d.environment;var e=a("./frontend.component");return b.FrontendAppComponent=e.FrontendAppComponent,c.exports});
+"use strict";
+var environment_1 = require('./environment');
+exports.environment = environment_1.environment;
+var frontend_component_1 = require('./frontend.component');
+exports.FrontendAppComponent = frontend_component_1.FrontendAppComponent;
+//# sourceMappingURL=index.js.map
