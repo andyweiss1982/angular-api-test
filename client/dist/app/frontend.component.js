@@ -9,18 +9,29 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
+var router_deprecated_1 = require('@angular/router-deprecated');
+var _1 = require('./+widgets/');
+var _2 = require('./+widget/');
+var widgets_service_1 = require('./widgets.service');
 var FrontendAppComponent = (function () {
-    function FrontendAppComponent() {
-        this.title = 'frontend works!';
+    function FrontendAppComponent(widgetsService) {
+        this.widgetsService = widgetsService;
+        this.title = 'Widgets!';
     }
     FrontendAppComponent = __decorate([
         core_1.Component({
             moduleId: module.id,
             selector: 'frontend-app',
             templateUrl: 'frontend.component.html',
-            styleUrls: ['frontend.component.css']
-        }), 
-        __metadata('design:paramtypes', [])
+            styleUrls: ['frontend.component.css'],
+            directives: [router_deprecated_1.ROUTER_DIRECTIVES],
+            providers: [widgets_service_1.WidgetsService, router_deprecated_1.ROUTER_PROVIDERS]
+        }),
+        router_deprecated_1.RouteConfig([
+            { path: '/widgets', component: _1.WidgetsComponent, name: 'Widgets' },
+            { path: '/widgets/:id', component: _2.WidgetComponent, name: 'Widget' }
+        ]), 
+        __metadata('design:paramtypes', [widgets_service_1.WidgetsService])
     ], FrontendAppComponent);
     return FrontendAppComponent;
 }());

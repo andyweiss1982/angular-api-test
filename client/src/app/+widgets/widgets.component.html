@@ -1,0 +1,10 @@
+<ul class="widgets">
+  <li *ngFor="let widget of widgets">
+    {{widget.name}}
+    <button (click)="gotoDetail(widget)">View Details</button>
+    <button (click)="delete(widget, $event)">Delete</button>
+  </li>
+</ul>
+
+
+
