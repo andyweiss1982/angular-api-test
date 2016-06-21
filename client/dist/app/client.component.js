@@ -12,6 +12,7 @@ var core_1 = require('@angular/core');
 var router_deprecated_1 = require('@angular/router-deprecated');
 var _1 = require('./+widgets/');
 var _2 = require('./+widget/');
+var _3 = require('./+home/');
 var widgets_service_1 = require('./widgets.service');
 var ClientAppComponent = (function () {
     function ClientAppComponent(widgetsService) {
@@ -29,7 +30,8 @@ var ClientAppComponent = (function () {
         }),
         router_deprecated_1.RouteConfig([
             { path: '/widgets', component: _1.WidgetsComponent, name: 'Widgets' },
-            { path: '/widgets/:id', component: _2.WidgetComponent, name: 'Widget' }
+            { path: '/widgets/:id', component: _2.WidgetComponent, name: 'Widget' },
+            { path: '/home', component: _3.HomeComponent, name: 'Home' }
         ]), 
         __metadata('design:paramtypes', [widgets_service_1.WidgetsService])
     ], ClientAppComponent);
