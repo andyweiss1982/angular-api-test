@@ -1,0 +1,22 @@
+{
+  "name": "angular_api",
+  "version": "1.0.0",
+  "description": "### TO REPEAT:",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "postinstall": "cd client && npm install"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/andyweiss1982/angular-api-test.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/andyweiss1982/angular-api-test/issues"
+  },
+  "homepage": "https://github.com/andyweiss1982/angular-api-test#readme"
+}
