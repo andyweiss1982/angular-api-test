@@ -1,1 +1,0 @@
-{"version":3,"file":"widget.js","sourceRoot":"","sources":["widget.ts"],"names":[],"mappings":";AAAA;IAAA;IAKA,CAAC;IAAD,aAAC;AAAD,CAAC,AALD,IAKC;AALY,cAAM,SAKlB,CAAA","sourcesContent":["export class Widget {\n  id: number;\n  name: string;\n  created_at: string;\n  updated_at: string;\n}"]}

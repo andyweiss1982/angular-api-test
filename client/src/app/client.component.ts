@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { RouteConfig, ROUTER_DIRECTIVES, ROUTER_PROVIDERS } from '@angular/router-deprecated';
+import { Component, OnInit } from '@angular/core';
+import { Router, RouteConfig, ROUTER_DIRECTIVES, ROUTER_PROVIDERS } from '@angular/router-deprecated';
 import { WidgetsComponent } from './+widgets/';
 import { WidgetComponent } from './+widget/';
 import { HomeComponent } from './+home/';
@@ -18,9 +18,16 @@ import { WidgetsService } from './widgets.service'
   {path: '/widgets/:id', component: WidgetComponent, name: 'Widget'},
   {path: '/home', component: HomeComponent, name: 'Home'}
 ])
-export class ClientAppComponent {
+export class ClientAppComponent implements OnInit {
   title = 'Widgets!';
 
-  constructor(private widgetsService: WidgetsService) { }
+  constructor(
+    private widgetsService: WidgetsService,
+    private router: Router
+  ) { }
+
+  ngOnInit(){
+    this.router.navigate(['Home']);
+  }
 
 }
