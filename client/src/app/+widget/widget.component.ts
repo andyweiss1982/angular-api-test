@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { WidgetsService } from '../widgets.service';
 import { RouteParams } from '@angular/router-deprecated';
+import { Widget } from '../models/widget';
+import { Router } from '@angular/router-deprecated';
 
 @Component({
   moduleId: module.id,
@@ -9,11 +11,13 @@ import { RouteParams } from '@angular/router-deprecated';
   styleUrls: ['widget.component.css']
 })
 export class WidgetComponent implements OnInit {
+  widget: Widget;
+  error: any;
+
   constructor(
     private widgetsService: WidgetsService,
     private routeParams: RouteParams,
-    public id: number,
-    public widget: any
+    private router: Router
   ) {}
 
   ngOnInit() {
@@ -22,6 +26,15 @@ export class WidgetComponent implements OnInit {
       this.widgetsService.getWidget(id)
         .then(widget => this.widget = widget);
     }
+  }
+
+  save() {
+    this.widgetsService
+      .save(this.widget)
+      .then(widget => {
+        this.router.navigate(['Widgets']);
+      })
+      .catch(error => this.error = error); // TODO: Display error message
   }
 
 }

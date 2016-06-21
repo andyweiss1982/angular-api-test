@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { WidgetComponent } from '../+widget/';
 import { WidgetsService } from '../widgets.service';
 import { Router } from '@angular/router-deprecated';
+import { Widget } from '../models/widget';
 
 @Component({
   moduleId: module.id,
@@ -10,10 +11,9 @@ import { Router } from '@angular/router-deprecated';
   styleUrls: ['widgets.component.css']
 })
 export class WidgetsComponent implements OnInit {
-  widgets: WidgetComponent[];
-  selectedWidget: WidgetComponent;
+  widgets: Widget[];
   error: any;
-  addingWidget = false;
+  widget = new Widget;
 
   constructor(
     private widgetsService: WidgetsService,
@@ -28,24 +28,29 @@ export class WidgetsComponent implements OnInit {
     this.widgetsService.getWidgets().then(widgets => this.widgets = widgets);
   }
 
-  gotoDetail(widget: WidgetComponent) {
+  gotoDetail(widget: Widget) {
     let link = ['Widget', { id: widget.id }];
     this.router.navigate(link);
   }
 
   addWidget() {
-    this.addingWidget = true;
-    this.selectedWidget = null;
+    this.widgetsService
+      .save(this.widget)
+      .then(widget =>{
+        this.widget = new Widget;
+        this.getWidgets();
+      })
+      .catch(error => this.error = error);
   }
 
-  delete(widget: WidgetComponent, event: any) {
+  delete(widget: Widget, event: any) {
     event.stopPropagation();
     this.widgetsService
       .delete(widget)
       .then(res => {
         this.widgets = this.widgets.filter(w => w !== widget);
       })
-      .catch(error => this.error = error); // TODO: Display error message
+      .catch(error => this.error = error);
   }
 
 }

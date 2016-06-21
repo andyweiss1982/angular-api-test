@@ -1,7 +1,15 @@
-<!-- <p>id: {{widget.id}}</p>
-<p>name: {{widget.name}}</p>
-<p>created at: {{widget.created_at}}</p>
-<p>updated at: {{widget.updated_at}}</p>
- -->
+<h3>Widget View</h3>
 
- HELLO WORLD
+<div *ngIf="widget">
+  <p><strong>ID:</strong> {{widget.id}}</p>
+  <p><strong>Name:</strong> {{widget.name}}</p>
+  <p><strong>Created at:</strong> {{widget.created_at}}</p>
+  <p><strong>Updated at:</strong> {{widget.updated_at}}</p>
+
+  <div>
+    <label>New Name</label>
+    <input [(ngModel)]="widget.name" placeholder= "name" />
+    <button (click)="save()">Save</button>
+  </div>
+</div>
+

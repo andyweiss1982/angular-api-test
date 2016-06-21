@@ -11,12 +11,12 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require('@angular/core');
 var widgets_service_1 = require('../widgets.service');
 var router_deprecated_1 = require('@angular/router-deprecated');
+var router_deprecated_2 = require('@angular/router-deprecated');
 var WidgetComponent = (function () {
-    function WidgetComponent(widgetsService, routeParams, id, widget) {
+    function WidgetComponent(widgetsService, routeParams, router) {
         this.widgetsService = widgetsService;
         this.routeParams = routeParams;
-        this.id = id;
-        this.widget = widget;
+        this.router = router;
     }
     WidgetComponent.prototype.ngOnInit = function () {
         var _this = this;
@@ -26,6 +26,15 @@ var WidgetComponent = (function () {
                 .then(function (widget) { return _this.widget = widget; });
         }
     };
+    WidgetComponent.prototype.save = function () {
+        var _this = this;
+        this.widgetsService
+            .save(this.widget)
+            .then(function (widget) {
+            _this.router.navigate(['Widgets']);
+        })
+            .catch(function (error) { return _this.error = error; }); // TODO: Display error message
+    };
     WidgetComponent = __decorate([
         core_1.Component({
             moduleId: module.id,
@@ -33,7 +42,7 @@ var WidgetComponent = (function () {
             templateUrl: 'widget.component.html',
             styleUrls: ['widget.component.css']
         }), 
-        __metadata('design:paramtypes', [widgets_service_1.WidgetsService, router_deprecated_1.RouteParams, Number, Object])
+        __metadata('design:paramtypes', [widgets_service_1.WidgetsService, router_deprecated_1.RouteParams, router_deprecated_2.Router])
     ], WidgetComponent);
     return WidgetComponent;
 }());

@@ -11,11 +11,12 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require('@angular/core');
 var widgets_service_1 = require('../widgets.service');
 var router_deprecated_1 = require('@angular/router-deprecated');
+var widget_1 = require('../models/widget');
 var WidgetsComponent = (function () {
     function WidgetsComponent(widgetsService, router) {
         this.widgetsService = widgetsService;
         this.router = router;
-        this.addingWidget = false;
+        this.widget = new widget_1.Widget;
     }
     WidgetsComponent.prototype.ngOnInit = function () {
         this.getWidgets();
@@ -29,8 +30,14 @@ var WidgetsComponent = (function () {
         this.router.navigate(link);
     };
     WidgetsComponent.prototype.addWidget = function () {
-        this.addingWidget = true;
-        this.selectedWidget = null;
+        var _this = this;
+        this.widgetsService
+            .save(this.widget)
+            .then(function (widget) {
+            _this.widget = new widget_1.Widget;
+            _this.getWidgets();
+        })
+            .catch(function (error) { return _this.error = error; });
     };
     WidgetsComponent.prototype.delete = function (widget, event) {
         var _this = this;
@@ -40,7 +47,7 @@ var WidgetsComponent = (function () {
             .then(function (res) {
             _this.widgets = _this.widgets.filter(function (w) { return w !== widget; });
         })
-            .catch(function (error) { return _this.error = error; }); // TODO: Display error message
+            .catch(function (error) { return _this.error = error; });
     };
     WidgetsComponent = __decorate([
         core_1.Component({

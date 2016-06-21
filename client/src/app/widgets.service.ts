@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { WidgetComponent } from './+widget/';
 import { Headers, Http } from '@angular/http';
+import { Widget } from './models/widget';
 
 import 'rxjs/add/operator/toPromise';
 
@@ -9,7 +10,7 @@ export class WidgetsService {
   private widgetsUrl = 'api/widgets';
   constructor(private http: Http) { };
 
-  getWidgets(): Promise<WidgetComponent[]> {
+  getWidgets(): Promise<Widget[]> {
     return this.http.get(this.widgetsUrl)
                .toPromise()
                .then(response => response.json())
@@ -21,14 +22,14 @@ export class WidgetsService {
       .then(widgets => widgets.filter(widget => widget.id === id)[0]);
   }
 
-  save(widget: WidgetComponent): Promise<WidgetComponent> {
+  save(widget: Widget): Promise<Widget> {
     if (widget.id) {
       return this.put(widget);
     }
     return this.post(widget);
   }
 
-  delete(widget: WidgetComponent) {
+  delete(widget: Widget) {
     let headers = new Headers();
     headers.append('Content-Type', 'application/json');
 
@@ -41,7 +42,7 @@ export class WidgetsService {
   }
 
   // Add new Widget
-  private post(widget: WidgetComponent): Promise<WidgetComponent> {
+  private post(widget: Widget): Promise<Widget> {
     let headers = new Headers({
       'Content-Type': 'application/json'
     });
@@ -54,7 +55,7 @@ export class WidgetsService {
   }
 
   // Update existing Widget
-  private put(widget: WidgetComponent) {
+  private put(widget: Widget) {
     let headers = new Headers();
     headers.append('Content-Type', 'application/json');
 
