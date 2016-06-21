@@ -8,12 +8,20 @@
 * ng build -prod
 * rm -rf public (delete public folder)
 * ln -s client/dist public (symlink client/dist to new public folder)
-* edit package.json to move typings from dev dependency to dependency
+* edit package.json in client folder to move typings from dev dependency to dependency
+* create package.json at root with the following (enables the node buildpack to sit at root):
+
+```
+{
+"scripts": {
+  "postinstall": "cd client && npm install"
+}
+```
 * heroku create
-* heroku buildpacks:add https://github.com/jasonswett/heroku-buildpack-nodejs (depends on angular folder being called client/)
-* heroku buildpacks:add heroku/ruby
+* add heroku node buildpack and then ruby buildpack
 * edit angular.cli.build.js to include map files
 * push to heroku
+* after ng build -prod, you may need to delete sourcemap refs at the bottom of vendor js files
 
 ```
 var Angular2App = require('angular-cli/lib/broccoli/angular2-app');
