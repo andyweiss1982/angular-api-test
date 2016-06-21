@@ -1,16 +1,17 @@
-<ul class="widgets">
-  <li *ngFor="let widget of widgets">
-    {{widget.name}}
-    <button (click)="gotoDetail(widget)">View Details</button>
-    <button (click)="delete(widget, $event)">Delete</button>
-  </li>
-</ul>
-
 <div>
   <label>New Widget</label>
   <input [(ngModel)]="widget.name" placeholder= "name" />
   <button (click)="addWidget()">Save</button>
 </div>
 
+<hr>
 
-
+<table>
+  <tbody>
+    <tr *ngFor="let widget of widgets">
+      <td>{{widget.name}}</td>
+      <td><button (click)="gotoDetail(widget)">View Details</button></td>
+      <td><button (click)="delete(widget, $event)">Delete</button></td>
+    </tr>
+  </tbody>
+</table>

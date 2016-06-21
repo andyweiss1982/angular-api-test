@@ -6,9 +6,9 @@ import { WidgetsService } from './widgets.service'
 
 @Component({
   moduleId: module.id,
-  selector: 'frontend-app',
-  templateUrl: 'frontend.component.html',
-  styleUrls: ['frontend.component.css'],
+  selector: 'client-app',
+  templateUrl: 'client.component.html',
+  styleUrls: ['client.component.css'],
   directives: [ROUTER_DIRECTIVES],
   providers: [WidgetsService, ROUTER_PROVIDERS]
 })
@@ -16,7 +16,7 @@ import { WidgetsService } from './widgets.service'
   {path: '/widgets', component: WidgetsComponent, name: 'Widgets'},
   {path: '/widgets/:id', component: WidgetComponent, name: 'Widget'}
 ])
-export class FrontendAppComponent {
+export class ClientAppComponent {
   title = 'Widgets!';
 
   constructor(private widgetsService: WidgetsService) { }

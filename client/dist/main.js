@@ -7,5 +7,5 @@ var widgets_service_1 = require('./app/widgets.service');
 if (_1.environment.production) {
     core_1.enableProdMode();
 }
-platform_browser_dynamic_1.bootstrap(_1.FrontendAppComponent, [widgets_service_1.WidgetsService, http_1.HTTP_PROVIDERS]);
+platform_browser_dynamic_1.bootstrap(_1.ClientAppComponent, [widgets_service_1.WidgetsService, http_1.HTTP_PROVIDERS]);
 //# sourceMappingURL=main.js.map

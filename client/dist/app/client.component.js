@@ -13,17 +13,17 @@ var router_deprecated_1 = require('@angular/router-deprecated');
 var _1 = require('./+widgets/');
 var _2 = require('./+widget/');
 var widgets_service_1 = require('./widgets.service');
-var FrontendAppComponent = (function () {
-    function FrontendAppComponent(widgetsService) {
+var ClientAppComponent = (function () {
+    function ClientAppComponent(widgetsService) {
         this.widgetsService = widgetsService;
         this.title = 'Widgets!';
     }
-    FrontendAppComponent = __decorate([
+    ClientAppComponent = __decorate([
         core_1.Component({
             moduleId: module.id,
-            selector: 'frontend-app',
-            templateUrl: 'frontend.component.html',
-            styleUrls: ['frontend.component.css'],
+            selector: 'client-app',
+            templateUrl: 'client.component.html',
+            styleUrls: ['client.component.css'],
             directives: [router_deprecated_1.ROUTER_DIRECTIVES],
             providers: [widgets_service_1.WidgetsService, router_deprecated_1.ROUTER_PROVIDERS]
         }),
@@ -32,8 +32,8 @@ var FrontendAppComponent = (function () {
             { path: '/widgets/:id', component: _2.WidgetComponent, name: 'Widget' }
         ]), 
         __metadata('design:paramtypes', [widgets_service_1.WidgetsService])
-    ], FrontendAppComponent);
-    return FrontendAppComponent;
+    ], ClientAppComponent);
+    return ClientAppComponent;
 }());
-exports.FrontendAppComponent = FrontendAppComponent;
-//# sourceMappingURL=frontend.component.js.map
+exports.ClientAppComponent = ClientAppComponent;
+//# sourceMappingURL=client.component.js.map
