@@ -13,7 +13,7 @@ import { Widget } from '../models/widget';
 export class WidgetsComponent implements OnInit {
   widgets: Widget[];
   error: any;
-  widget = new Widget;
+  widget = new Widget();
 
   constructor(
     private widgetsService: WidgetsService,
@@ -37,7 +37,7 @@ export class WidgetsComponent implements OnInit {
     this.widgetsService
       .save(this.widget)
       .then(widget =>{
-        this.widget = new Widget;
+        this.widget = new Widget();
         this.getWidgets();
       })
       .catch(error => this.error = error);
